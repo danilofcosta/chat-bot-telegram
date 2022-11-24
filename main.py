@@ -1,14 +1,16 @@
 from tokem import tokem as chavet
 from defs import*
-import telebot
+import telebot,os
 bot = telebot.TeleBot(chavet)
 temp=[]
 memory=load()
+
 #verifica se chegou mensagem
 def verificar(mensagem):
-    print(memory)
-    print(mensagem.chat.first_name)
+    if mensagem.chat.id not in memory['Conhecidos']:
+        database_joson(mensagem.chat.first_name,mensagem.chat.id,'Conhecidos')
     print(mensagem.text)
+  
     return True
 @bot.message_handler(commands=["start"])
 def start(mensagem):
@@ -18,9 +20,12 @@ def start(mensagem):
 def responder(mensagem):
     msguser=mensagem.text
     memory=load()
+    memory=memory['messafem_txt']
+
     if  'qual meu nome?'in msguser.lower() :
         bot.reply_to(mensagem,f' Seu nome {mensagem.chat.first_name}')
         bot.send_message(mensagem.chat.id,'esqueceu?')
+
 
     elif msguser in memory:
         bot.reply_to(mensagem,memory[mensagem.text])
