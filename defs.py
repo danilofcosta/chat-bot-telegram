@@ -3,7 +3,7 @@ def create_database (nome_aquivo):
     import os,json
     #criada aquivo .json
     loading=os.getcwd()
-    start={'oi':'ola'}
+    start={'messafem_txt':{'oi':'ola'}}
     for file in os.listdir(loading):
         if file == f'{nome_aquivo}.json':
             return f'{nome_aquivo}.json'
@@ -16,12 +16,12 @@ def create_database (nome_aquivo):
         return f'{nome_aquivo}.json'
      
 
-def database_joson(chave,valor,database='database'):
+def database_joson(chave,valor,namekye='messafem_txt',database='database'):
     import json
     #criada aquivo .json
     with open(f'{database}.json','r') as  databaseLoad:
         aquivoload=json.load(databaseLoad)#carrega o que esta salvo na base de dados ecoloca em uma variavel /dicionario
-        aquivoload[chave]=valor
+        aquivoload[namekye][chave]=valor
         with open(f'{database}.json','w') as  databasesave:
             json.dump(aquivoload,databasesave,indent=4)
 
