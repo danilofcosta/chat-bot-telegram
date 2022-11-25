@@ -1,3 +1,5 @@
+#pip install pytelegrambotapi
+#pip install wikipedia
 from tokem import tokem as chavet
 from defs import*
 import telebot
