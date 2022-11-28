@@ -72,4 +72,4 @@ def responder(mensagem):
             temp.clear()
             print(temp)
 #vericação de updates continua
-bot.polling()
+bot.polling(none_stop=True)
