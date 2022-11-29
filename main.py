@@ -1,5 +1,4 @@
 #pip install pytelegramapibot
-#pip install wikipedia
 from tokem import tokem as chavet
 from defs import*
 import telebot,random
@@ -46,8 +45,8 @@ try:
     @bot.message_handler (content_types=["sticker"]) 
     def sticker (mensagem):
         memory=load() 
-        print('eu recebi stiker',ran)
-        
+        print('eu recebi stiker')
+        nick=f'{mensagem.sticker.set_name}={mensagem.sticker.file_unique_id}-{mensagem.sticker.emoji}'
         #bot.send_sticker(mensagem.chat.id,memory['sticker'][nick])
         if  nick in memory['sticker']:
             ran=random.randint(1,len(memory['sticker']))
@@ -61,7 +60,7 @@ try:
             bot.send_sticker(mensagem.chat.id,memory['sticker'][rsticker])
         else:
             print('SALVEI')
-            nick=f'{mensagem.sticker.set_name}={mensagem.sticker.file_unique_id}-{mensagem.sticker.emoji}'
+            
             database_joson(nick,mensagem.sticker.file_id,'sticker')
         
 
@@ -95,6 +94,6 @@ try:
     
 
 except:
-    bot.send_message(422779743,'eu tive um erro ')
+    bot.send_message(,'eu tive um erro ')
 bot.polling(none_stop=False)
-bot.send_message(422779743,'eu tive um err 54541o ')
+bot.send_message(,'eu tive um err 54541o ')
